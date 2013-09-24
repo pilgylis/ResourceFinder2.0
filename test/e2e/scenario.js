@@ -4,7 +4,7 @@
 'use strict';
 
 describe('My Application', function() {
-	beforeEach(function() {
+	/*beforeEach(function() {
 		browser().navigateTo('/');
 		sleep(0.5);
 	});
@@ -23,7 +23,7 @@ describe('My Application', function() {
 		it('should...', function() {
 			//...
 		});
-	});
+	});*/
 });
 
 })();
