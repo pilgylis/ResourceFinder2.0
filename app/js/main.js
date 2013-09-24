@@ -64,7 +64,7 @@
 		} else {
 		}
 		
-		progress += 8;
+		progress += 12;
 		if (window.$) { // make sure jquery is loaded
 	        $("#splash").find(".meter").css("width", progress + "%");
 	    }
@@ -75,6 +75,8 @@
 			angular.element().ready(function() {
 				$html.addClass('ng-app');
 				angular.bootstrap($html, [lastResult['name']]);
+				
+				if ($("#splash").is(":visible")) $("#splash").hide();
 			});
 			
 			bootstrapped = true;
