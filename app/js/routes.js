@@ -8,6 +8,7 @@ return {
 	        templateUrl: 'resources.html',
 	        title: "Resources",
 	        dependencies: [
+                'services/resourceService',
 	            'controllers/resourcesController'
 	        ]
 	    },

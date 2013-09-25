@@ -1,5 +1,14 @@
 <div ng-controller="resourcesController">
 	<div class="resources-container">
-
+        <div class="checkboxes">
+            <span ng-repeat="resource in resources">
+                <input type="checkbox" />
+            </span>
+        </div>
+        <div class="names">
+            <span ng-repeat="resource in resources">
+                {{resource.name}}
+            </span>
+        </div>
 	</div>
 </div>
