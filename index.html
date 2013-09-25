@@ -5,24 +5,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link rel="stylesheet" type="text/css" media="all" href="app/css/app.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="app/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="app/css/bootstrap-theme.min.css" />
 	</head>
 	<body >
 		<div id="splash" style="position: fixed;top: 0;right: 0;left: 0;bottom: 0;z-index: 9000;background-color: #e3e3e3;">
 	        <div style="background-color:transparent;position:absolute;top:50%;left:0;width:100%;height:1px;overflow:visible;visibility:visible;display:block">
 	            <div style="background-color:transparent;position:absolute;top:-30px;left:50%;width:400px;height:60px;margin-left:-200px;z-index:9002;color: #000;">
 	                <div>Loading...</div>
-	                <div style="height:20px;background: #555;-moz-border-radius:25px;-webkit-border-radius: 25px;border-radius:25px;padding: 10px;-webkit-box-shadow:inset 0 -1px 1px rgba(255,255,255,0.3);-moz-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);box-shadow:inset 0 -1px 1px rgba(255,255,255,0.3);">
-	                    <span class="meter" style="display: block;height: 100%;width:10%;-webkit-border-top-right-radius: 8px;-webkit-border-bottom-right-radius: 8px;-moz-border-radius-topright: 8px;-moz-border-radius-bottomright: 8px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;-webkit-border-top-left-radius: 20px;-webkit-border-bottom-left-radius: 20px;-moz-border-radius-topleft: 20px;-moz-border-radius-bottomleft: 20px;border-top-left-radius: 20px;border-bottom-left-radius: 20px;background-color: rgb(43,194,83);"></span>
+	                <div style="height:15px;background: #555;-moz-border-radius:15px;-webkit-border-radius: 25px;border-radius:15px;padding: 5px;-webkit-box-shadow:inset 0 -1px 1px rgba(255,255,255,0.3);-moz-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);box-shadow:inset 0 -1px 1px rgba(255,255,255,0.3); -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box;">
+	                    <span class="meter" style="display: block; height: 100%; width: 10%; -webkit-border-top-right-radius: 4px; -webkit-border-bottom-right-radius: 4px; -moz-border-radius-topright: 4px; -moz-border-radius-bottomright: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; -webkit-border-top-left-radius: 12px; -webkit-border-bottom-left-radius: 12px; -moz-border-radius-topleft: 12px; -moz-border-radius-bottomleft: 12px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; background-color: rgb(43,194,83); -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box;"></span>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
-		<h1>AngularJS + RequireJS</h1>
-		<ul class="menu">
-			<li><a href="/">View 1</a></li>
-			<li><a href="/view2">View 2</a></li>
-		</ul>
-		<div ng-view></div>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">RF2.0</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Resources</a></li>
+                    <li><a href="#">Order</a></li>
+                </ul>
+            </div>
+        </nav>
+		<div ng-view class="content-container"></div>
 		<script data-main="app/js/main" src="/bower_components/requirejs/require.js"></script>		
 	</body>
 </html>
