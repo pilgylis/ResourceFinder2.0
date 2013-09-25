@@ -10,7 +10,7 @@ define([
 		
 		var isProduction = false;
 		var defaultDependencies = [];
-		var baseUrl = "/";
+		var baseUrl = "";
 	    var baseCodeUrl = "/app/";
 	    var baseTemplateUrl = baseCodeUrl + "partials/";
 		app.config(
