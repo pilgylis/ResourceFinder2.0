@@ -687,9 +687,6 @@
     <Content Include="test\e2e\scenario.js" />
     <Content Include="test\main-test.js" />
     <Content Include="test\unit.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -781,9 +778,18 @@
     <Content Include="app\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\fonts\glyphicons-halflings-regular.woff" />
     <None Include="index.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="webapi\resources\page\0.json" />
     <Content Include="webapi\resources\page\1.json" />
     <Content Include="webapi\Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="scripts\e2e-test.bat" />
@@ -793,12 +799,6 @@
     <Content Include="scripts\watchr.rb" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
