@@ -1,14 +1,31 @@
+<link rel="stylesheet" type="text/css" media="all" href="app/css/resources.css" />
 <div ng-controller="resourcesController">
 	<div class="resources-container">
         <div class="checkboxes">
+            <span class="empty-cell"></span>
+            <span class="empty-cell"></span>
             <span ng-repeat="resource in resources">
                 <input type="checkbox" />
             </span>
         </div>
         <div class="names">
+            <span class="empty-cell"></span>
+            <span class="empty-cell"></span>
             <span ng-repeat="resource in resources">
                 {{resource.name}}
             </span>
+        </div>
+        <div class="timeline">
+            <div class="day" ng-repeat="day in days">
+                <div><span>{{day}}</span></div>
+                <div class="timeslots">
+                    <span ng-repeat="slot in timeslots track by $index">{{$index}}</span>
+                </div>
+                <div ng-repeat="resource in resources">
+                    <span ng-repeat="slot in timeslots track by $index"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
 	</div>
 </div>

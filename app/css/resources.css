@@ -1,0 +1,44 @@
+﻿.resources-container {
+
+}
+.resources-container .checkboxes, .resources-container .names, .resources-container .capacity {
+    float: left;
+    margin: 0;
+}
+.checkboxes span, .names span {
+    display: block;
+    height: 30px;
+    border: 1px solid #333;
+    padding: 5px 10px;
+}
+.names span {
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.timeline {
+    margin-left: 235px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.day {
+    float: left;
+}
+.day div {
+    padding: 0; margin: 0; height: 30px;
+    white-space: nowrap;
+}
+.timeline span {
+    margin: 0;
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    border: 1px solid #333;
+    padding: 5px 10px;
+ }
+.checkboxes span {
+    width: 35px;
+}
