@@ -55,8 +55,7 @@
   display: inline-block;
   position: absolute;
   top: 0;
-  left: -10px;
-  right: -10px;
+  left: 0;
   height: 100%;
   margin: 0;
   vertical-align: middle;

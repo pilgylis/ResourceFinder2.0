@@ -81,6 +81,7 @@
     <Content Include="app\js\services.js" />
     <Content Include="app\js\services\resourceService.js" />
     <Content Include="app\partials\.gitignore" />
+    <Content Include="app\partials\directives\slider.html" />
     <Content Include="app\partials\directives\timegrid.html" />
     <Content Include="app\partials\partial2.html" />
     <Content Include="app\partials\resources.html" />
