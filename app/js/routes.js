@@ -9,7 +9,9 @@ return {
 	        title: "Resources",
 	        dependencies: [
                 'services/resourceService',
-	            'controllers/resourcesController'
+	            'controllers/resourcesController',
+                'directives/timegrid',
+                'directives/slider'
 	        ]
 	    },
 	}

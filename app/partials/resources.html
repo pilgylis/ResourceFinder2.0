@@ -15,17 +15,6 @@
                 {{resource.name}}
             </span>
         </div>
-        <div class="timeline">
-            <div class="day" ng-repeat="day in days">
-                <div><span>{{day}}</span></div>
-                <div class="timeslots">
-                    <span ng-repeat="slot in timeslots track by $index">{{$index}}</span>
-                </div>
-                <div ng-repeat="resource in resources">
-                    <span ng-repeat="slot in timeslots track by $index"></span>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
+        <timegrid days="days" hours="hours" resources="resources" selected-timeslot="selectedTimeslot" step-type="quarter"></timegrid>
 	</div>
 </div>

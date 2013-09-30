@@ -2,7 +2,7 @@ define(['app', "services/resourceService"], function (app) {
     app.lazy.controller("resourcesController", ['$scope', 'resourceService', function ($scope, resourceService) {
         $scope.resources = resourceService.query({ page: 0 });
 
-        $scope.timeslots = new Array(24);
+        $scope.hours = new Array(24);
 
         var today = new Date();
         var getDay = function (date) {
@@ -15,6 +15,11 @@ define(['app', "services/resourceService"], function (app) {
 
         var tomorrow = new Date();
         tomorrow.setDate(today.getDate() + 1);
-        $scope.days = [getDay(today)];
+        $scope.days = [getDay(today), getDay(tomorrow)];
+
+        $scope.selectedTimeslot = {
+            start: 10,
+            end: 12
+        };
 	}]);
 });

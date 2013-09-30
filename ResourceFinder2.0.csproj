@@ -73,12 +73,15 @@
     <Content Include="app\js\controllers.js" />
     <Content Include="app\js\controllers\resourcesController.js" />
     <Content Include="app\js\directives.js" />
+    <Content Include="app\js\directives\slider.js" />
+    <Content Include="app\js\directives\timegrid.js" />
     <Content Include="app\js\filters.js" />
     <Content Include="app\js\main.js" />
     <Content Include="app\js\routes.js" />
     <Content Include="app\js\services.js" />
     <Content Include="app\js\services\resourceService.js" />
     <Content Include="app\partials\.gitignore" />
+    <Content Include="app\partials\directives\timegrid.html" />
     <Content Include="app\partials\partial2.html" />
     <Content Include="app\partials\resources.html" />
     <Content Include="bower_components\angular-mocks\angular-mocks.js" />

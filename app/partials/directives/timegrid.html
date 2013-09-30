@@ -1,0 +1,15 @@
+﻿<div class="timeline">
+    <div class="days">
+        <slider floor="0" ceiling="{{numberOfSlots - 1}}" step="1" ng-model-low="selectedTimeslot.start"  ng-model-high="selectedTimeslot.end"></slider>
+        <div class="day" ng-repeat="day in days">
+            <div class="day-header">{{day}}</div>
+            <div class="hours">
+                <span ng-repeat="hour in hours track by $index" class="cell">{{$index}}</span>
+            </div>
+            <div ng-repeat="resource in resources">
+                <span ng-repeat="hour in hours track by $index" class="cell"></span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
