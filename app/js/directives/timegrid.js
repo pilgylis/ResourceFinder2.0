@@ -50,18 +50,22 @@
                     scope.hours = new Array(24);
                 }
 
-                scope.numberOfSlots = scope.days.length * scope.hours.length;
+                var numberOfSlots = scope.days.length * scope.hours.length;
                 switch (scope.stepType) {
                     case "quarter":
-                        scope.numberOfSlots *= 4;
+                        numberOfSlots *= 4;
                         break;
                     case "half":
-                        scope.numberOfSlots *= 2;
+                        numberOfSlots *= 2;
                         break;
                     case "full":
                     default:
                         break;
                 }
+
+                scope.numberOfSlots = function () {
+                    return numberOfSlots;
+                };
             }
         };
     }]);

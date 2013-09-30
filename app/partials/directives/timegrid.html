@@ -1,6 +1,6 @@
 ﻿<div class="timeline">
     <div class="days">
-        <slider floor="0" ceiling="{{numberOfSlots - 1}}" step="1" ng-model-low="selectedTimeslot.start"  ng-model-high="selectedTimeslot.end"></slider>
+        <slider step-count="numberOfSlots" ng-model-selected="selectedTimeslot"></slider>
         <div class="day" ng-repeat="day in days">
             <div class="day-header">{{day}}</div>
             <div class="hours">
