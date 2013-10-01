@@ -2,7 +2,7 @@
     <div class="days">
         <slider step-count="numberOfSlots" ng-model-selected="selectedTimeslot"></slider>
         <div class="day" ng-repeat="day in days">
-            <div class="day-header">{{day}}</div>
+            <div class="day-header">{{day |date:'mediumDate'}}</div>
             <div class="hours">
                 <span ng-repeat="hour in hours track by $index" class="cell">{{$index}}</span>
             </div>

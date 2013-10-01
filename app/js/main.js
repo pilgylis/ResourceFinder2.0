@@ -46,7 +46,8 @@
 	    "jquery", 
 	    "angular", 
 	    "angularRoute", 
-	    "angularResource", 
+	    "angularResource",
+        "ui-bootstrap",
     	"text",
     	"routes",
 		"app"
@@ -64,7 +65,7 @@
 		} else {
 		}
 		
-		progress += 12;
+		progress += 8;
 		if (window.$) { // make sure jquery is loaded
 	        $("#splash").find(".meter").css("width", progress + "%");
 	    }

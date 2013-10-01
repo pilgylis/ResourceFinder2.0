@@ -35,15 +35,7 @@
                 
                 if (!scope.days) {
                     var today = new Date();
-                    var getDay = function (date) {
-                        var dd = date.getDate();
-                        var mm = date.getMonth() + 1; //January is 0!
-
-                        var yyyy = date.getFullYear();
-                        return dd + '/' + mm + '/' + yyyy;
-                    };
-
-                    scope.days = [getDay(today)];
+                    scope.days = [today];
                 }
 
                 if (!scope.hours) {

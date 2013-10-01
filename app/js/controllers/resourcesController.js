@@ -1,25 +1,26 @@
-define(['app', "services/resourceService"], function (app) {
-    app.lazy.controller("resourcesController", ['$scope', 'resourceService', function ($scope, resourceService) {
-        $scope.resources = resourceService.query({ page: 0 });
+define(['app', "services/resourceService", "services/timeService"], function (app) {
+    app.lazy.controller("resourcesController", ['$scope', 'ResourceService', 'TimeService', function ($scope, ResourceService, TimeService) {
+        $scope.resources = ResourceService.query({ page: 0 });
+        
+        $scope.hours = TimeService.hours;
+        $scope.days = TimeService.days;
+        $scope.selectedTimeslot = TimeService.selectedTimeslot;
 
-        $scope.hours = new Array(24);
+        // time picker
+        $scope.stepType = TimeService.selectedTimeslot.stepType;
 
-        var today = new Date();
-        var getDay = function (date) {
-            var dd = date.getDate();
-            var mm = date.getMonth() + 1; //January is 0!
-
-            var yyyy = date.getFullYear();
-            return dd + '/' + mm + '/' + yyyy;
-        };
-
-        var tomorrow = new Date();
-        tomorrow.setDate(today.getDate() + 1);
-        $scope.days = [getDay(today), getDay(tomorrow)];
-
-        $scope.selectedTimeslot = {
-            start: 10,
-            end: 12
-        };
+        $scope.hourStep = 1;
+        switch ($scope.stepType) {
+            case 'quarter':
+                $scope.minuteStep = 15;
+                break;
+            case 'half':
+                $scope.minuteStep = 30;
+                break;
+            case 'full':
+            default:
+                $scope.minuteStep = 0;
+                break;
+        }
 	}]);
 });

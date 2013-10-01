@@ -8,31 +8,23 @@
                 ngModelSelected: "="
             },
             templateUrl: "/app/partials/directives/slider.html",
-            link: function (scope, element, attrs) {
-
-                var calculateSelection = function (containerWidth, stepWidth) {
-                    var selection = element.find(".selection");
-                    selection.css("left", stepWidth * scope.ngModelSelected.start);
-                    selection.css("right", (stepWidth + 1) * scope.ngModelSelected.start);
-                };
-                
-                var calculatePosition = function () {
-                    var containerWidth = element[0].offsetWidth;
-                    var stepCount = scope.stepCount()();
-                    var stepWidth = containerWidth / stepCount;
-
-                    calculateSelection(containerWidth, stepWidth);
-                };
-
+            compile: function (element, attrs) {
                 return {
                     post: function (scope, element, attrs) {
-                        if (!scope.ngModelSelected) {
-                            scope.ngModelSelected = {
-                                start: 0,
-                                end: 2
-                            };
-                        }
+                        var calculateSelection = function (containerWidth, stepWidth) {
+                            var selection = element.find(".selection");
+                            selection.css("left", stepWidth * scope.ngModelSelected.startSlot);
+                            selection.css("width", (stepWidth) * (scope.ngModelSelected.endSlot - scope.ngModelSelected.startSlot));
+                        };
 
+                        var calculatePosition = function () {
+                            var containerWidth = element[0].offsetWidth;
+                            var stepCount = scope.stepCount()();
+                            var stepWidth = containerWidth / stepCount;
+
+                            calculateSelection(containerWidth, stepWidth);
+                        };
+                        
                         if (!scope.stepCount) scope.stepCount = 24;
 
                         $timeout(calculatePosition);

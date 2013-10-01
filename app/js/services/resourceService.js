@@ -1,5 +1,5 @@
 ﻿define(["app"], function (app) {
-    app.lazy.factory('resourceService', ["$resource", "$rootScope", function ($resource, $rootScope) {
+    app.lazy.factory('ResourceService', ["$resource", "$rootScope", function ($resource, $rootScope) {
         var resourceManager = $resource("/webapi/resources/page/:page.json",
             {page: "@page"},
             {

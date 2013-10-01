@@ -5,7 +5,7 @@ define([
 		'use strict';
 
 		var app = angular.module('rf2', [
-			'ngRoute', 'ngResource'
+			'ngRoute', 'ngResource', "ui.bootstrap"
 		]);
 		
 		var isProduction = false;
