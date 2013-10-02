@@ -1,13 +1,21 @@
 ﻿define(['app'], function (app) {
-    app.lazy.factory("TimeService", ["$rootScope", function ($rootScope) {
+    app.lazy.factory("TimeService", ["$rootScope", "$parse", function ($rootScope, $parse) {
         var hours = new Array(24);
-        var today = new Date();
 
-        var tomorrow = new Date();
-        tomorrow.setDate(today.getDate() + 1);
-        var days = [today, tomorrow];
+        var startDay = new Date(); // today
+        startDay = new Date(startDay.getFullYear(), startDay.getMonth(), startDay.getDate());
+        var numberOfDays = 2;
         
-        var stepType = 'half'; // values: quarter, half, full
+        var tempDate = new Date(startDay.getTime());
+        var days = [];
+        for (var i = 0; i < numberOfDays; i++) {
+            days.push(new Date(tempDate.getTime()));
+
+            // advance the date
+            tempDate.setDate(tempDate.getDate() + 1);
+        }
+                
+        var stepType = 'quarter'; // values: quarter, half, full
 
         var getSlotLength = function () {
             if (stepType == 'quarter') return 15;
@@ -25,7 +33,7 @@
             return result;
         };
 
-        var getSlot = function (date) {
+        var timeToSlot = function (date) {
             var dateIndex = getDateIndex(date);
             if (dateIndex >= 0) {
                 return Math.round((dateIndex * hours.length * 60 + (date.getHours() * 60 + date.getMinutes())) / getSlotLength());
@@ -34,42 +42,36 @@
             return -1;
         };
 
-        var startTime = new Date();
+        var slotToTime = function (slot) {
+            var minutes = slot * getSlotLength();
+            return new Date(startDay.getTime() + minutes * 60 * 1000);
+        };
+
+        var startTime = new Date(startDay.getTime());
         startTime.setHours(7);
         startTime.setMinutes(0);
 
-        var endTime = new Date();
+        var endTime = new Date(startDay.getTime());
         endTime.setHours(8);
         endTime.setMinutes(0);
+        
+        var startSlot = timeToSlot(startTime), endSlot = timeToSlot(endTime);
 
-        $rootScope.selectedTimeslot = function () {
-            return {
-                start: startTime,
-                end: endTime,
-                stepType: stepType
-            };
-        };
-
-        var startSlot, endSlot;
-
-        var calculateSlots = function () {
-            startSlot = getSlot(startTime);
-            endSlot = getSlot(endTime);
-        };
-
-        calculateSlots();
-        $rootScope.$watch("selectedTimeslot", calculateSlots);
-
+        var selectedTime = {
+            start: startTime,
+            end: endTime
+        }
+        
+        $rootScope.startTime = startTime;
+        $rootScope.endTime = endTime;
+        
         return {
             hours: hours,
             days: days,
-            selectedTimeslot: {
-                start: startTime,
-                end: endTime,
-                startSlot: startSlot,
-                endSlot: endSlot
-            },
-            stepType: stepType
+            selectedTime: selectedTime,
+            stepType: stepType,
+            timeToSlot: timeToSlot,
+            slotToTime: slotToTime
         };
     }]);
 });

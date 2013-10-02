@@ -1,5 +1,5 @@
-﻿define(['app'], function (app) {
-    app.lazy.directive("timegrid", ['$window', function ($window) {
+﻿define(['app', "services/timeService"], function (app) {
+    app.lazy.directive("timegrid", ['$window', 'TimeService', function ($window, TimeService) {
         return {
             restrict: "E",
             replace: true,
@@ -7,8 +7,8 @@
                 days: "=",
                 hours: "=",
                 resources: "=",
-                selectedTimeslot: "=",
-                stepType: "@" // values: quarter (1/4), half (1/2) and full (1/1), in hours
+                selectedTime: "=",
+                stepType: "@" // values: quarter (1/4), half (1/2) and full (1/1), in hours,
             },
             templateUrl: "/app/partials/directives/timegrid.html",
             link: function (scope, element, attrs) {
@@ -24,9 +24,12 @@
                     return width;
                 };
 
+                var daysContainer = element.find(".days");
+                var slider = element.find(".slider");
+
                 scope.$watch(scope.getContentWidth, function (newValue, oldValue) {
-                    element.find(".days").css("width", newValue);
-                    element.find(".slider").css("width", newValue);
+                    daysContainer.css("width", newValue);
+                    slider.css("width", newValue);
                 }, true);
 
                 element.bind('resize', function () {
@@ -55,8 +58,34 @@
                         break;
                 }
 
-                scope.numberOfSlots = function () {
-                    return numberOfSlots;
+                scope.numberOfSlots = numberOfSlots;
+
+                scope.startSlot = TimeService.timeToSlot(scope.selectedTime.start);
+                scope.endSlot = TimeService.timeToSlot(scope.selectedTime.end);
+
+                scope.$watch("selectedTime.start", function () {
+                    scope.startSlot = TimeService.timeToSlot(scope.selectedTime.start);
+                });
+
+                scope.$watch("selectedTime.end", function () {
+                    scope.endSlot = TimeService.timeToSlot(scope.selectedTime.end);
+                });
+
+                scope.selectionChanged = function (eventArgs) {
+                    var timeValue = TimeService.slotToTime(eventArgs.value);
+                    if (eventArgs.target == 'selectedLow') {
+                        if (timeValue < scope.selectedTime.end) {                            
+                            scope.selectedTime.start = timeValue;
+                        } else {
+                            scope.startSlot = TimeService.timeToSlot(scope.selectedTime.start);
+                        }
+                    } else { // 'selectedHigh'
+                        if (timeValue > scope.selectedTime.start) {
+                            scope.selectedTime.end = timeValue;
+                        } else {
+                            scope.endSlot = TimeService.timeToSlot(scope.selectedTime.end);
+                        }
+                    }
                 };
             }
         };

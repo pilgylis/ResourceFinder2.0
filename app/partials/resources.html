@@ -1,8 +1,38 @@
 <link rel="stylesheet" type="text/css" media="all" href="app/css/resources.css" />
 <div ng-controller="resourcesController">
-    <div>
-        <timepicker ng-model="selectedTimeslot.start" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
-        <timepicker ng-model="selectedTimeslot.end" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
+    <div class="row summary-row">
+        <div class="col-md-3">
+            <div class="btn-group">
+                <button type="button" class="btn btn-info">{{selectedTime.start |date: 'MMM d, y'}}</button>
+                <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
+                <div class="dropdown-menu time-area" ng-model="selectedTime.start">
+                    <datepicker min="minDate"></datepicker>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-info">{{selectedTime.start |date: 'h:mm'}}</button>
+                <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>            
+                <div class="dropdown-menu time-area">
+                    <timepicker ng-model="selectedTime.start" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="btn-group">
+                <button type="button" class="btn btn-info">{{selectedTime.end |date: 'MMM d, y'}}</button>
+                <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
+                <div class="dropdown-menu time-area" ng-model="selectedTime.end">
+                    <datepicker min="minDate"></datepicker>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-info">{{selectedTime.end |date: 'h:mm'}}</button>
+                <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>            
+                <div class="dropdown-menu time-area">
+                    <timepicker ng-model="selectedTime.end" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
+                </div>
+            </div>
+        </div>
     </div>
 	<div class="resources-container">
         <div class="checkboxes">
@@ -19,6 +49,6 @@
                 {{resource.name}}
             </span>
         </div>
-        <timegrid days="days" hours="hours" resources="resources" selected-timeslot="selectedTimeslot" step-type="{{stepType}}"></timegrid>
+        <timegrid days="days" hours="hours" resources="resources" selected-time="selectedTime" step-type="{{stepType}}"></timegrid>
 	</div>
 </div>

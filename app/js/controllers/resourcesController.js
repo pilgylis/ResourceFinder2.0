@@ -4,10 +4,10 @@ define(['app', "services/resourceService", "services/timeService"], function (ap
         
         $scope.hours = TimeService.hours;
         $scope.days = TimeService.days;
-        $scope.selectedTimeslot = TimeService.selectedTimeslot;
+        $scope.selectedTime = TimeService.selectedTime;
 
         // time picker
-        $scope.stepType = TimeService.selectedTimeslot.stepType;
+        $scope.stepType = TimeService.stepType;
 
         $scope.hourStep = 1;
         switch ($scope.stepType) {
@@ -22,5 +22,12 @@ define(['app', "services/resourceService", "services/timeService"], function (ap
                 $scope.minuteStep = 0;
                 break;
         }
+
+        $scope.dateOptions = {
+            'year-format': "'yy'",
+            'starting-day': 1
+        };
+
+        $scope.minDate = ($scope.minDate) ? null : new Date();
 	}]);
 });
