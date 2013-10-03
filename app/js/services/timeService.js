@@ -15,7 +15,7 @@
             tempDate.setDate(tempDate.getDate() + 1);
         }
                 
-        var stepType = 'quarter'; // values: quarter, half, full
+        var stepType = 'full'; // values: quarter, half, full
 
         var getSlotLength = function () {
             if (stepType == 'quarter') return 15;

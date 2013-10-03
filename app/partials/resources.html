@@ -6,14 +6,14 @@
                 <button type="button" class="btn btn-info">{{selectedTime.start |date: 'MMM d, y'}}</button>
                 <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
                 <div class="dropdown-menu time-area" ng-model="selectedTime.start">
-                    <datepicker min="minDate"></datepicker>
+                    <datepicker max="selectedTime.end"></datepicker>
                 </div>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-info">{{selectedTime.start |date: 'h:mm'}}</button>
-                <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>            
+                <button type="button" class="btn btn-info dropdown-toggle" prevent-close-on-click="true"><span class="caret"></span></button>            
                 <div class="dropdown-menu time-area">
-                    <timepicker ng-model="selectedTime.start" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
+                    <timepicker ng-model="selectedTime.start" max="selectedTime.end" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
                 </div>
             </div>
         </div>
@@ -22,14 +22,14 @@
                 <button type="button" class="btn btn-info">{{selectedTime.end |date: 'MMM d, y'}}</button>
                 <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
                 <div class="dropdown-menu time-area" ng-model="selectedTime.end">
-                    <datepicker min="minDate"></datepicker>
+                    <datepicker min="selectedTime.start"></datepicker>
                 </div>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-info">{{selectedTime.end |date: 'h:mm'}}</button>
-                <button type="button" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>            
+                <button type="button" class="btn btn-info dropdown-toggle" prevent-close-on-click="true"><span class="caret"></span></button>            
                 <div class="dropdown-menu time-area">
-                    <timepicker ng-model="selectedTime.end" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
+                    <timepicker ng-model="selectedTime.end" min="selectedTime.start" hour-step="hourStep" minute-step="minuteStep" show-meridian="true" readonly-input="true"></timepicker>
                 </div>
             </div>
         </div>
